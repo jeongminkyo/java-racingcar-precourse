@@ -10,4 +10,10 @@ public class Cars {
 		this.cars = cars;
 	}
 
+	public void drive() {
+		for (Car car : cars) {
+			car.drive();
+			car.printCar();
+		}
+	}
 }
