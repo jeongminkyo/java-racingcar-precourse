@@ -2,6 +2,8 @@ package car;
 
 import java.util.Objects;
 
+import game.ExceptionMessage;
+
 public class Car implements Comparable<Car> {
 
 	public static final int MAX_CAR_NAME_LENGTH = 5;
@@ -58,7 +60,7 @@ public class Car implements Comparable<Car> {
 
 	private void checkCarNameLength(String name) {
 		if(name.length() > MAX_CAR_NAME_LENGTH) {
-			throw new IllegalArgumentException("차의 이름은 5자가 넘어갈 수 없습니다.");
+			throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LIMIT);
 		}
 	}
 
