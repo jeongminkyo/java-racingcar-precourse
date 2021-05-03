@@ -1,6 +1,8 @@
 package car;
 
-public class Car {
+import java.util.Objects;
+
+public class Car implements Comparable<Car> {
 
 	public static final int MAX_CAR_NAME_LENGTH = 5;
 	public static final int MAX_GO_NUMBER = 4;
@@ -14,6 +16,10 @@ public class Car {
 		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public void drive() {
 		RandNum randNum = new RandNum();
 
@@ -24,6 +30,21 @@ public class Car {
 
 	public void printCar() {
 		System.out.println(name + " : " + getDistanceChar());
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Car car = (Car)o;
+		return driveDistance == car.driveDistance;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, driveDistance);
 	}
 
 	private String getDistanceChar() {
@@ -51,6 +72,11 @@ public class Car {
 
 	private void incrDriveDistance() {
 		this.driveDistance += 1;
+	}
+
+	@Override
+	public int compareTo(Car target) {
+		return this.driveDistance <= target.driveDistance ? 1 : - 1;
 	}
 }
 

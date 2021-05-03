@@ -21,6 +21,7 @@ public class RacingGame {
 		carInput();
 		gameCountInput();
 		play();
+		printWinner();
 	}
 
 	private void carInput() {
@@ -52,6 +53,10 @@ public class RacingGame {
 		for (int i =0; i < gameCount.getGameCount(); i ++) {
 			cars.drive();
 		}
+	}
+
+	private void printWinner() {
+		System.out.println(cars.getWinner() + GameMessage.RACING_MSG);
 	}
 
 	private void setCars(List<Car> cars) {
